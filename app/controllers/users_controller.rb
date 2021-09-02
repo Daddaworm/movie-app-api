@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  # before_action :set_user, only: [:show, :update, :destroy]
+  wrap_parameters :user, include: [:username, :email, :password, :password_confirmation]
 
   # GET /users
   def index
@@ -9,18 +10,28 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1
+  # def show
+  #   render json: @user
+  # end
+
+  # GET /me (Auto Login feature)
   def show
-    render json: @user
+    @user = User.find_by(id: session[:user_id])
+    if @user 
+        render json: @user
+    else
+        render json: { errors: ["Not authorized"] }, status: :unauthorized
+    end
   end
 
-  # POST /users
+  # POST /users (create new user)
   def create
-    @user = User.new(user_params)
-
-    if @user.save
-      render json: @user, status: :created, location: @user
+    user = User.create!(user_params)
+    if user
+      session[:user_id] = user.id 
+      render json: { user: user }, status: :created
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: { errors: ['Not authorized'] }, status: :unauthorized
     end
   end
 
@@ -46,6 +57,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:username, :email, :password_digest)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation)
     end
 end

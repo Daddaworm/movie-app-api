@@ -13,10 +13,10 @@ Movie.destroy_all
 Favorite.destroy_all
 
 puts 'Creating users...'
-User.create(username: 'Ethan', email: 'ethan@yahoo.com', password_digest: '1234')
-User.create(username: 'Max', email: 'max@gmail.com', password_digest: '1234')
-User.create(username: 'Alberto', email: 'alberto@cointainer.com', password_digest: '1234')
-User.create(username: 'Tylerfield', email: 't-money@gmail.com', password_digest: '1234')
+User.create(username: 'Ethan', email: 'ethan@yahoo.com', password: '1234', password_confirmation: '1234')
+User.create(username: 'Max', email: 'max@gmail.com', password: '1234', password_confirmation: '1234')
+User.create(username: 'Alberto', email: 'alberto@cointainer.com', password: '1234', password_confirmation: '1234')
+User.create(username: 'Tylerfield', email: 't-money@gmail.com', password: '1234', password_confirmation: '1234')
 
 puts 'Creating movies...'
 Movie.create(title: 'Lord of the Rings - The fellowship of the ring', overview: Faker::Lorem.question(word_count: 10), poster_url: 'https://m.media-amazon.com/images/I/61nztI2IyfL._AC_SY741_.jpg')
