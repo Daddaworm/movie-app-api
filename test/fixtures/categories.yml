@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sci-fi: MyString
+  fantasy: MyString
+  adventure: MyString
+  action: MyString
+  drama: MyString
+  comedy: MyString
+  horror: MyString
+  documentary: MyString
+  tv: MyString
+
+two:
+  sci-fi: MyString
+  fantasy: MyString
+  adventure: MyString
+  action: MyString
+  drama: MyString
+  comedy: MyString
+  horror: MyString
+  documentary: MyString
+  tv: MyString
