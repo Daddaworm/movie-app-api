@@ -46,6 +46,6 @@ class CategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def category_params
-      params.require(:category).permit(:sci-fi, :fantasy, :adventure, :action, :drama, :comedy, :horror, :documentary, :tv)
+      params.require(:category).permit(:name)
     end
 end

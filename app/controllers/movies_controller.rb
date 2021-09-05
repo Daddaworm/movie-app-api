@@ -15,8 +15,8 @@ class MoviesController < ApplicationController
 
   # POST /movies
   def create
-    @movie = Movie.new(movie_params)
-
+    current_user = User.find(session[:user_id])
+    @movie = current_user.movies.build(movie_params)
     if @movie.save
       render json: @movie, status: :created, location: @movie
     else
@@ -46,6 +46,6 @@ class MoviesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def movie_params
-      params.require(:movie).permit(:title, :overview, :poster_url)
+      params.require(:movie).permit(:title, :mpaa_rating, :category_id, :overview, :poster_url, :trailer_url, :favorite, :user_id)
     end
 end

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     has_secure_password
-    has_many :favorites
+    has_many :movies
 
     validates :username, presence: true, uniqueness: true
     validates :username, length: { minimum: 2 }
