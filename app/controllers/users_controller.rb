@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     user = User.find_by(id: session[:user_id])
     # byebug
     if user 
-        render json: user, include: ['movies']
+        render json: user, include: [:movies, :categories]
     else
         render json: { errors: ["Not authorized"] }, status: :unauthorized
     end

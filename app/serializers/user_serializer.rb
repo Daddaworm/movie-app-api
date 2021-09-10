@@ -3,4 +3,5 @@ class UserSerializer < ActiveModel::Serializer
 
 
   has_many :movies
+  has_many :categories, through: :movies
 end
