@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
 
-
     # POST /login
     def create
         # byebug
@@ -13,7 +12,6 @@ class SessionsController < ApplicationController
         end
     end
 
-
     # DELETE /logout 
     def destroy
         if session[:user_id]
@@ -22,7 +20,5 @@ class SessionsController < ApplicationController
             render json: { errors: ["You are not logged in"] }, status: :unauthorized
         end
     end
-
-
 
 end
